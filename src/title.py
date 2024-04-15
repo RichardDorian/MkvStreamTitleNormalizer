@@ -92,14 +92,14 @@ known_languages = {
 
 def get_language(track):
   if track.language is None: return ''
-
-  # https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
-  if ("qaa" >= track.language and track.language <= "qtz") or track.language == "und" or track.language == "zxx":
-    return ""
-
+  
   language = track.language.lower()
   if language in known_languages:
     return known_languages[language]
+  else:
+  # https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
+    if ("qaa" >= track.language and track.language <= "qtz") or track.language == "und" or track.language == "zxx":
+      return ""
   return language
 
 def get_audio_channels(track):
