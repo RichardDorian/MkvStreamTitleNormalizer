@@ -1,6 +1,6 @@
 from media import VideoTrack, AudioTrack
 
-def generate_title(track: VideoTrack | AudioTrack):
+def generate_title(track):
   elements = []
   if isinstance(track, VideoTrack):
     elements.extend([get_video_resolution(track), get_hdr_format(track)])
