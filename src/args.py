@@ -49,7 +49,7 @@ def input_file():
 def folder_input():
   path = None
   try:
-    i = argv.index("--folder-input")
+    i = argv.index("--input-folder")
     if i + 1 >= len(argv): return None
     path = argv[i + 1]
   except ValueError:
@@ -62,11 +62,5 @@ def folder_input():
     return path
   else:
     raise ValueError(f"{path} is not a directory")
-  
-def validate_args():
-  input_file_v = input_file() is None
-  folder_input_v = folder_input() is None
-
-  return not (input_file_v or folder_input_v)
   
 
