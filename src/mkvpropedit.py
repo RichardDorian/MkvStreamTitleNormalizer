@@ -18,7 +18,7 @@ def is_installed():
   process = subprocess.run([binary_path(), "--version"], stdout=subprocess.DEVNULL)
   return process.returncode == 0
 
-def set_new_titles(file: str, titles: dict[int, str]):
+def set_new_titles(file, titles):
   args = []
 
   for id, title in titles.items():
@@ -26,6 +26,6 @@ def set_new_titles(file: str, titles: dict[int, str]):
 
   return run(file, args)
 
-def run(file: str, args: list[str] = []):
+def run(file, args = []):
   process = subprocess.run([binary_path(), file, *args], stdout=subprocess.DEVNULL)
   return process.returncode == 0

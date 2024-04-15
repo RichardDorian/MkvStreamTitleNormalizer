@@ -27,7 +27,7 @@ def main():
         file_path = path.join(root, filename)
         process_file(file_path)
 
-def process_file(file_path: str):
+def process_file(file_path):
   if not file_path.endswith(".mkv"): return
 
   info = mediainfo.get_info(file_path)

@@ -12,7 +12,7 @@ def generate_title(track: VideoTrack | AudioTrack):
 
   return " ".join(elements)
 
-def get_video_resolution(track: VideoTrack):
+def get_video_resolution(track):
   if track.width == 7680: return "8K"
   if track.width == 3840: return "4K"
   if track.width == 1920: return "1080p"
@@ -23,7 +23,7 @@ def get_video_resolution(track: VideoTrack):
   if track.width == 320: return "144p"
   return f"{track.height}p"
 
-def get_hdr_format(track: VideoTrack):
+def get_hdr_format(track):
   if track.hdr_format is not None:
     if "Dolby Vision" in track.hdr_format: return "Dolby Vision"
     if "HDR10+" in track.hdr_format: return "HDR10"
@@ -90,7 +90,7 @@ known_languages = {
   "hy": "Armenian"
 }
 
-def get_language(track: AudioTrack):
+def get_language(track):
   if track.language is None: return ''
 
   # https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
@@ -102,14 +102,14 @@ def get_language(track: AudioTrack):
     return known_languages[language]
   return language
 
-def get_audio_channels(track: AudioTrack):
+def get_audio_channels(track):
   if track.channels == 1: return "Mono"
   if track.channels == 2: return "Stereo"
   if track.channels == 6: return "5.1"
   if track.channels == 8: return "7.1"
   return f"{track.channels}.0"
 
-def get_audio_codec(track: AudioTrack):
+def get_audio_codec(track):
   codec = ""
 
   if track.commercial_format is not None:
@@ -122,7 +122,7 @@ def get_audio_codec(track: AudioTrack):
   if len(codec) > 0: return f"({codec})"
   return ""
 
-def get_dolby_atmos(track: AudioTrack):
+def get_dolby_atmos(track):
   if track.commercial_format is not None and "Dolby Atmos" in track.commercial_format:
     return "(Dolby Atmos)"
   return ""

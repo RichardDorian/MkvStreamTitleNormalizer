@@ -19,7 +19,7 @@ def is_installed():
   process = subprocess.run([binary_path(), "--version"], stdout=subprocess.DEVNULL)
   return process.returncode == 0
 
-def get_info(file: str):
+def get_info(file):
   process = subprocess.run([binary_path(), "--Output=JSON", file], capture_output=True)
   if process.returncode != 0:
     print("Error getting media info")

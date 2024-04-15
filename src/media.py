@@ -1,6 +1,6 @@
 class Media:
-  def __init__(self, data: dict):
-    self.tracks: list[VideoTrack | AudioTrack] = []
+  def __init__(self, data):
+    self.tracks = []
 
     for track in data["media"]["track"]:
       if track["@type"] == "Video":
@@ -9,14 +9,7 @@ class Media:
         self.tracks.append(AudioTrack(track))
 
 class VideoTrack:
-  id: int
-  width: int
-  height: int
-  hdr_format: str | None
-  hdr_format_compat: str | None
-  transfer_characteristics: str | None
-
-  def __init__(self, data: dict):
+  def __init__(self, data):
     self.id = int(data["ID"])
     self.width = int(data["Width"])
     self.height = int(data["Height"])
@@ -25,12 +18,7 @@ class VideoTrack:
     self.transfer_characteristics = data.get("transfer_characteristics", None)
 
 class AudioTrack:
-  id: int
-  language: str | None
-  channels: int
-  commercial_format: str | None
-
-  def __init__(self, data: dict):
+  def __init__(self, data):
     self.id = int(data["ID"])
     self.language = data.get("Language", None)
     self.channels = int(data["Channels"])
