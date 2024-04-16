@@ -29,6 +29,9 @@ def mediainfo_binary():
   else:
     raise FileNotFoundError(f"mediainfo binary not found at {path}")
 
+def use_tracker():
+  return "--use-tracker" in argv
+
 def input_file():
   path = None
   try:
