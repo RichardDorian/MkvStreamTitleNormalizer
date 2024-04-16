@@ -41,7 +41,7 @@ def process_file(file_path):
   if mkvpropedit.set_new_titles(file_path, new_titles):
     print(f"Titles updated successfully ({file_path})")
   else:
-    print("Failed to update titles")
+    print(f"Failed to update titles ({file_path})")
   
 if __name__ == "__main__":
   main()
